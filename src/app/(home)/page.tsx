@@ -1,12 +1,14 @@
 'use client'
 
-import { Attributes, FunctionComponent, createElement, useEffect } from 'react'
+import { Attributes, FunctionComponent, createElement } from 'react'
 import { AiOutlineCopy, AiOutlineDelete } from 'react-icons/ai'
 import { useStore } from '../store'
 import { Button, Form, Tooltip } from 'antd'
 import { cloneDeep } from 'lodash-es'
 import { ComponentItem } from '../types'
 import { renderComponent } from '../utils/coomponent'
+import * as Icons from '@ant-design/icons'
+import type { InputProps } from 'antd'
 
 export default function Home() {
   const componentList = useStore(state => {
@@ -65,7 +67,19 @@ export default function Home() {
                 style={{ width: '100%', marginBottom: 0 }}
                 required={item.required}
               >
-                {createElement(item.component!, item.attrs as Attributes)}
+                {createElement(item.component!, {
+                  ...item.attrs,
+                  prefix: item.attrs?.prefix ? (
+                    createElement((Icons as any)[item.attrs?.prefix as string])
+                  ) : (
+                    <span></span>
+                  ),
+                  suffix: (item.attrs as InputProps)?.suffix ? (
+                    createElement((Icons as any)[(item.attrs as InputProps)?.suffix as string])
+                  ) : (
+                    <span></span>
+                  ),
+                } as any)}
               </Form.Item>
               {Number(currentIndex) === index ? (
                 <div className='flex items-center gap-x-4 absolute top-[-5px] right-2 z-10'>
