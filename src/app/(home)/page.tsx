@@ -1,6 +1,6 @@
 'use client'
 
-import { Attributes, FunctionComponent, createElement } from 'react'
+import { Attributes, FunctionComponent, createElement, useEffect } from 'react'
 import { AiOutlineCopy, AiOutlineDelete } from 'react-icons/ai'
 import { useStore } from '../store'
 import { Button, Form, Tooltip } from 'antd'
@@ -31,7 +31,7 @@ export default function Home() {
           arr.push(item)
           setComponentList(cloneDeep(arr))
           setCurrentIndex(arr.length - 1)
-          setCurrentComponent(componentList[arr.length - 1])
+          setCurrentComponent(arr[arr.length - 1])
         } else {
           const arr: ComponentItem[] = []
           arr.push(item)
@@ -63,6 +63,7 @@ export default function Home() {
                 labelCol={{ span: item.labelCol }}
                 wrapperCol={{ span: 24 - (item.labelCol || 6) }}
                 style={{ width: '100%', marginBottom: 0 }}
+                required={item.required}
               >
                 {createElement(item.component!, item.attrs as Attributes)}
               </Form.Item>
@@ -97,7 +98,9 @@ export default function Home() {
                         e.stopPropagation()
                         componentList.splice(index, 1)
                         setComponentList(cloneDeep(componentList))
-                        setCurrentIndex(index--)
+                        let i = index
+                        i--
+                        setCurrentIndex(i)
                       }}
                     ></Button>
                   </Tooltip>

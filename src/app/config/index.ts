@@ -49,6 +49,8 @@ export const componentList: ComponentItem[] = [
       prefix: null,
       size: 'middle',
       suffix: null,
+      value: '123',
+      readOnly: false,
     },
   },
   {
@@ -73,6 +75,8 @@ export const componentList: ComponentItem[] = [
       size: 'middle',
       suffix: null,
       visibilityToggle: true,
+      readOnly: false,
+      value: '',
     },
   },
   {
@@ -97,6 +101,8 @@ export const componentList: ComponentItem[] = [
       size: 'middle',
       suffix: null,
       enterButton: false,
+      readOnly: false,
+      value: '',
     },
   },
   {
@@ -113,6 +119,8 @@ export const componentList: ComponentItem[] = [
       bordered: true,
       maxLength: undefined,
       showCount: false,
+      readOnly: false,
+      value: '',
     },
   },
 ]

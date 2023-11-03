@@ -12,9 +12,9 @@ interface State {
 }
 
 export const useStore = create<State>(set => ({
-  componentList: localGet('componentList') || null,
-  currentComponent: localGet('currentComponent') || null,
-  currentIndex: Number(localGet('currentIndex')) || null,
+  componentList: localGet('componentList') ?? null,
+  currentComponent: localGet('currentComponent') ?? null,
+  currentIndex: localGet('currentIndex') ?? null,
   setComponentList: (data: ComponentItem[] | null) => {
     set({
       componentList: data,
