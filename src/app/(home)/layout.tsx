@@ -3,8 +3,8 @@
 import { ReactNode, CSSProperties } from 'react'
 import { Layout } from 'antd'
 const { Header: AntdHeader, Sider: AntdSider, Content } = Layout
-import Header from '../components/common/Header'
-import LeftSider from '../components/common/LeftSider'
+import Header from '../components/header/Header'
+import LeftSider from '../components/leftSider/LeftSider'
 
 const headerStyle: CSSProperties = {
   height: 50,

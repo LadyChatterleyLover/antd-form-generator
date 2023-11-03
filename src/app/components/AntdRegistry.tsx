@@ -12,9 +12,7 @@ const StyledComponentsRegistry = ({ children }: React.PropsWithChildren) => {
   useServerInsertedHTML(() => <style id='antd' dangerouslySetInnerHTML={{ __html: extractStyle(cache, true) }} />)
   return (
     <StyleProvider cache={cache}>
-      <ConfigProvider locale={zhCN} theme={{ token: { colorPrimary: '#13d8a7' } }}>
-        {children}
-      </ConfigProvider>
+      <ConfigProvider locale={zhCN}>{children}</ConfigProvider>
     </StyleProvider>
   )
 }

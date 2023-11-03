@@ -1,4 +1,3 @@
-import { Button, Input } from 'antd'
 import { LuFormInput } from 'react-icons/lu'
 import { MdOutlineInput, MdPassword, MdSearch } from 'react-icons/md'
 import { LiaHandPointerSolid } from 'react-icons/lia'
@@ -10,10 +9,11 @@ import { ComponentItem } from '../types'
 
 export const componentList: ComponentItem[] = [
   {
-    type: Button,
+    type: 'button',
     label: '按钮',
+    field: 'button',
     icon: LiaHandPointerSolid,
-    labelCol: 6,
+    labelCol: 2,
     attrs: <ButtonProps>{
       block: false,
       danger: false,
@@ -29,12 +29,13 @@ export const componentList: ComponentItem[] = [
     },
   },
   {
-    type: Input,
+    type: 'input',
     label: '单行文本',
     icon: LuFormInput,
-    labelCol: 6,
+    labelCol: 2,
     field: 'inputValue',
     rules: [],
+    required: true,
     attrs: <InputProps>{
       addonAfter: null,
       addonBefore: null,
@@ -42,7 +43,6 @@ export const componentList: ComponentItem[] = [
       bordered: true,
       placeholder: '请输入',
       disabled: false,
-      defaultValue: '',
       maxLength: undefined,
       showCount: false,
       status: '',
@@ -52,10 +52,11 @@ export const componentList: ComponentItem[] = [
     },
   },
   {
-    type: Input.Password,
+    type: 'password',
     label: '密码框',
+    required: true,
     icon: MdPassword,
-    labelCol: 6,
+    labelCol: 2,
     field: 'inputValue',
     rules: [],
     attrs: <PasswordProps>{
@@ -65,7 +66,6 @@ export const componentList: ComponentItem[] = [
       bordered: true,
       placeholder: '请输入',
       disabled: false,
-      defaultValue: '',
       maxLength: undefined,
       showCount: false,
       status: '',
@@ -76,10 +76,11 @@ export const componentList: ComponentItem[] = [
     },
   },
   {
-    type: Input.Search,
+    type: 'search',
     label: '搜索框',
     icon: MdSearch,
-    labelCol: 6,
+    labelCol: 2,
+    required: true,
     field: 'inputValue',
     rules: [],
     attrs: <SearchProps>{
@@ -89,7 +90,6 @@ export const componentList: ComponentItem[] = [
       bordered: true,
       placeholder: '请输入',
       disabled: false,
-      defaultValue: '',
       maxLength: undefined,
       showCount: false,
       status: '',
@@ -100,17 +100,17 @@ export const componentList: ComponentItem[] = [
     },
   },
   {
-    type: Input.TextArea,
+    type: 'textArea',
     label: '文本域',
+    required: true,
     icon: MdOutlineInput,
-    labelCol: 6,
+    labelCol: 2,
     field: 'inputValue',
     rules: [],
     attrs: <TextAreaProps>{
       addonAfter: null,
       autoSize: false,
       bordered: true,
-      defaultValue: '',
       maxLength: undefined,
       showCount: false,
     },
