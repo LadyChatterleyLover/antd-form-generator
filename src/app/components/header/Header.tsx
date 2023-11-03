@@ -1,4 +1,5 @@
-import { Button } from 'antd'
+import { useStore } from '@/app/store'
+import { Button, Modal } from 'antd'
 import {
   AiFillGithub,
   AiOutlinePlayCircle,
@@ -7,8 +8,14 @@ import {
   AiOutlineCopy,
   AiOutlineDelete,
 } from 'react-icons/ai'
+import { ExclamationCircleFilled } from '@ant-design/icons'
+
+const { confirm } = Modal
 
 const Header = () => {
+  const setComponentList = useStore(state => state.setComponentList)
+  const setCurrentComponent = useStore(state => state.setCurrentComponent)
+  const setCurrentIndex = useStore(state => state.setCurrentIndex)
   return (
     <div className='h-full flex items-center justify-between px-5'>
       <div className='flex items-center gap-x-5'>
@@ -48,6 +55,20 @@ const Header = () => {
           type='link'
           danger
           icon={<AiOutlineDelete className='text-xl'></AiOutlineDelete>}
+          onClick={() => {
+            confirm({
+              title: '确定要清空所有组件吗？',
+              icon: <ExclamationCircleFilled />,
+              onOk() {
+                setComponentList(null)
+                setCurrentComponent(null)
+                setCurrentIndex(null)
+                localStorage.removeItem('componentList')
+                localStorage.removeItem('currentComponent')
+                localStorage.removeItem('currentIndex')
+              },
+            })
+          }}
         >
           清空
         </Button>

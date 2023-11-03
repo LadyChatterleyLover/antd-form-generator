@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.2",
+    "@ant-design/icons": "^5.2.6",
     "antd": "^5.10.3",
     "axios": "^1.6.0",
     "lodash-es": "^4.17.21",

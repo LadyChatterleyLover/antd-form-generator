@@ -6,28 +6,28 @@ interface State {
   componentList: ComponentItem[] | null
   currentComponent: ComponentItem | null
   currentIndex: number | null
-  setComponentList: (data: ComponentItem[]) => void
-  setCurrentComponent: (data: ComponentItem) => void
-  setCurrentIndex: (data: number) => void
+  setComponentList: (data: ComponentItem[] | null) => void
+  setCurrentComponent: (data: ComponentItem | null) => void
+  setCurrentIndex: (data: number | null) => void
 }
 
 export const useStore = create<State>(set => ({
   componentList: localGet('componentList') || null,
   currentComponent: localGet('currentComponent') || null,
   currentIndex: Number(localGet('currentIndex')) || null,
-  setComponentList: (data: ComponentItem[]) => {
+  setComponentList: (data: ComponentItem[] | null) => {
     set({
       componentList: data,
     })
     localSet('componentList', data)
   },
-  setCurrentComponent: (data: ComponentItem) => {
+  setCurrentComponent: (data: ComponentItem | null) => {
     set({
       currentComponent: data,
     })
     localSet('currentComponent', data)
   },
-  setCurrentIndex: (data: number) => {
+  setCurrentIndex: (data: number | null) => {
     set({
       currentIndex: data,
     })
