@@ -4,6 +4,7 @@ import { ReactNode, CSSProperties } from 'react'
 import { Layout } from 'antd'
 const { Header: AntdHeader, Sider: AntdSider, Content } = Layout
 import Header from '../components/common/Header'
+import LeftSider from '../components/common/LeftSider'
 
 const headerStyle: CSSProperties = {
   height: 50,
@@ -39,7 +40,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
         </AntdHeader>
         <Layout hasSider>
           <AntdSider style={leftSiderStyle} width={260}>
-            left
+            <LeftSider></LeftSider>
           </AntdSider>
           <Content style={contentStyle}>{children}</Content>
         </Layout>
