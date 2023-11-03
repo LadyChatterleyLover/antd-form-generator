@@ -1,11 +1,18 @@
 import { Button, Input } from 'antd'
+import { LuFormInput } from 'react-icons/lu'
+import { MdOutlineInput, MdPassword, MdSearch } from 'react-icons/md'
+import { LiaHandPointerSolid } from 'react-icons/lia'
 import type { InputProps, ButtonProps } from 'antd'
+import type { PasswordProps } from 'antd/es/input/Password'
+import type { SearchProps } from 'antd/es/input/Search'
+import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { ComponentItem } from '../types'
 
-export const components: ComponentItem[] = [
+export const componentList: ComponentItem[] = [
   {
     type: Button,
-    label: '输入框',
+    label: '按钮',
+    icon: LiaHandPointerSolid,
     labelCol: 6,
     attrs: <ButtonProps>{
       block: false,
@@ -23,7 +30,8 @@ export const components: ComponentItem[] = [
   },
   {
     type: Input,
-    label: '输入框',
+    label: '单行文本',
+    icon: LuFormInput,
     labelCol: 6,
     field: 'inputValue',
     rules: [],
@@ -41,6 +49,70 @@ export const components: ComponentItem[] = [
       prefix: null,
       size: 'middle',
       suffix: null,
+    },
+  },
+  {
+    type: Input.Password,
+    label: '密码框',
+    icon: MdPassword,
+    labelCol: 6,
+    field: 'inputValue',
+    rules: [],
+    attrs: <PasswordProps>{
+      addonAfter: null,
+      addonBefore: null,
+      allowClear: false,
+      bordered: true,
+      placeholder: '请输入',
+      disabled: false,
+      defaultValue: '',
+      maxLength: undefined,
+      showCount: false,
+      status: '',
+      prefix: null,
+      size: 'middle',
+      suffix: null,
+      visibilityToggle: true,
+    },
+  },
+  {
+    type: Input.Search,
+    label: '搜索框',
+    icon: MdSearch,
+    labelCol: 6,
+    field: 'inputValue',
+    rules: [],
+    attrs: <SearchProps>{
+      addonAfter: null,
+      addonBefore: null,
+      allowClear: false,
+      bordered: true,
+      placeholder: '请输入',
+      disabled: false,
+      defaultValue: '',
+      maxLength: undefined,
+      showCount: false,
+      status: '',
+      prefix: null,
+      size: 'middle',
+      suffix: null,
+      enterButton: false,
+    },
+  },
+  {
+    type: Input.TextArea,
+    label: '文本域',
+    icon: MdOutlineInput,
+    labelCol: 6,
+    field: 'inputValue',
+    rules: [],
+    attrs: <TextAreaProps>{
+      addonAfter: null,
+      autoSize: false,
+      bordered: true,
+      defaultValue: '',
+      maxLength: undefined,
+      showCount: false,
     },
   },
 ]

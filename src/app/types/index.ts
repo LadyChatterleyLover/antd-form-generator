@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 import {
   Button,
   Cascader,
@@ -18,6 +18,9 @@ import {
 } from 'antd'
 
 import type { ButtonProps, InputProps } from 'antd'
+import type { PasswordProps } from 'antd/es/input/Password'
+import type { SearchProps } from 'antd/es/input/Search'
+import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { Rule } from 'antd/es/form'
 
 export type AntdComponent =
@@ -45,7 +48,7 @@ export type AntdComponent =
 export interface ComponentItem {
   type: AntdComponent
   label?: string
-  icon?: ReactNode
+  icon?: FunctionComponent
   value?: any
   field?: string
   showLabel?: boolean
@@ -53,5 +56,5 @@ export interface ComponentItem {
   rules?: Rule[]
   children?: ComponentItem[]
   defaultProps?: Record<string, any>
-  attrs?: ButtonProps | InputProps
+  attrs?: ButtonProps | InputProps | PasswordProps | SearchProps | TextAreaProps
 }
