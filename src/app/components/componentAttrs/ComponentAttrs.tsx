@@ -1,6 +1,7 @@
 import { useStore } from '@/app/store'
 import { Result } from 'antd'
 import InputAttrs from '../componentAttrs/InputAttrs'
+import ButtonAttrs from './ButtonAttrs'
 
 const ComponentAttrs = () => {
   const currentComponent = useStore(state => state.currentComponent)
@@ -13,6 +14,7 @@ const ComponentAttrs = () => {
         currentComponent.type === 'textarea' ? (
           <InputAttrs></InputAttrs>
         ) : null}
+        {currentComponent.type === 'button' ? <ButtonAttrs></ButtonAttrs> : null}
       </div>
     </div>
   ) : (

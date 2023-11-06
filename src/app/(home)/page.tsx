@@ -87,6 +87,7 @@ export default function Home() {
                   ) : (
                     <span></span>
                   ),
+                  children: item.type === 'button' ? item.attrs?.value : null,
                 } as any)}
               </Form.Item>
               {Number(currentIndex) === index ? (

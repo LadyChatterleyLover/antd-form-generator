@@ -26,6 +26,7 @@ export const componentList: ComponentItem[] = [
       size: 'middle',
       target: '',
       type: 'default',
+      value: '按钮',
     },
   },
   {

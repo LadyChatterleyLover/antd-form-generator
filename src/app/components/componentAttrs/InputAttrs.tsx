@@ -1,12 +1,12 @@
 'use client'
 
+import { useReactive } from 'ahooks'
+import { useEffect } from 'react'
 import { useStore } from '@/app/store'
 import { Form, Input, InputNumber, Select, Switch } from 'antd'
 import { cloneDeep } from 'lodash-es'
 import { LuPointer } from 'react-icons/lu'
 import ChooseIcon from '../chooseIcon/ChooseIcon'
-import { useReactive } from 'ahooks'
-import { useEffect } from 'react'
 
 const InputAttrs = () => {
   const [form] = Form.useForm()
