@@ -1,6 +1,6 @@
 'use client'
 
-import { Attributes, FunctionComponent, createElement } from 'react'
+import { Attributes, FunctionComponent, createElement, useEffect } from 'react'
 import { AiOutlineCopy, AiOutlineDelete } from 'react-icons/ai'
 import { useStore } from '../store'
 import { Button, Form, Tooltip } from 'antd'
@@ -11,6 +11,8 @@ import * as Icons from '@ant-design/icons'
 import type { InputProps } from 'antd'
 
 export default function Home() {
+  const [form] = Form.useForm()
+
   const componentList = useStore(state => {
     state.componentList?.map(item => {
       item.component = renderComponent(item.type) as FunctionComponent
@@ -21,6 +23,12 @@ export default function Home() {
   const setComponentList = useStore(state => state.setComponentList)
   const setCurrentComponent = useStore(state => state.setCurrentComponent)
   const setCurrentIndex = useStore(state => state.setCurrentIndex)
+
+  useEffect(() => {
+    componentList?.map(item => {
+      form.setFieldValue(item.field, item.attrs?.value)
+    })
+  }, [componentList, form])
 
   return (
     <div
@@ -47,7 +55,7 @@ export default function Home() {
       }}
     >
       {componentList?.length ? (
-        <Form>
+        <Form form={form} name='componentList'>
           {componentList.map((item, index) => (
             <div
               key={item.field}

@@ -49,7 +49,7 @@ export const componentList: ComponentItem[] = [
       prefix: '',
       size: 'middle',
       suffix: '',
-      value: '123',
+      value: '',
       readOnly: false,
     },
   },
