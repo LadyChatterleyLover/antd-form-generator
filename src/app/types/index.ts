@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'react'
 
-import type { ButtonProps, InputProps } from 'antd'
+import type { ButtonProps, InputNumberProps, InputProps } from 'antd'
 import type { PasswordProps } from 'antd/es/input/Password'
 import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { Rule } from 'antd/es/form'
+import { SelectProps } from 'antd/lib'
 
 export type ComponentType =
   | 'input'
@@ -43,5 +44,5 @@ export interface ComponentItem {
   defaultProps?: Record<string, any>
   required?: boolean
   component?: FunctionComponent
-  attrs?: ButtonProps | InputProps | PasswordProps | SearchProps | TextAreaProps
+  attrs?: ButtonProps | InputProps | PasswordProps | SearchProps | TextAreaProps | InputNumberProps | SelectProps
 }

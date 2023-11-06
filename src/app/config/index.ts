@@ -1,7 +1,8 @@
 import { LuFormInput } from 'react-icons/lu'
+import { GoNumber } from 'react-icons/go'
 import { MdOutlineInput, MdPassword, MdSearch } from 'react-icons/md'
 import { LiaHandPointerSolid } from 'react-icons/lia'
-import type { InputProps, ButtonProps } from 'antd'
+import type { InputProps, ButtonProps, InputNumberProps } from 'antd'
 import type { PasswordProps } from 'antd/es/input/Password'
 import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
@@ -122,6 +123,36 @@ export const componentList: ComponentItem[] = [
       showCount: false,
       readOnly: false,
       value: '',
+    },
+  },
+  {
+    type: 'inputNumber',
+    label: '计数器',
+    icon: GoNumber,
+    labelCol: 2,
+    field: 'inputNumberValue',
+    rules: [],
+    required: true,
+    attrs: <InputNumberProps>{
+      addonAfter: null,
+      addonBefore: null,
+      bordered: true,
+      placeholder: '请输入',
+      disabled: false,
+      status: '',
+      prefix: '',
+      size: 'middle',
+      suffix: '',
+      value: '',
+      readOnly: false,
+      max: undefined,
+      min: undefined,
+      step: 1,
+      stringMode: false,
+      controls: true,
+      decimalSeparator: '',
+      keyboard: true,
+      precision: undefined,
     },
   },
 ]
