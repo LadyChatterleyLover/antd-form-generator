@@ -110,10 +110,12 @@ export default function Home() {
                       icon={<AiOutlineDelete className='text-base'></AiOutlineDelete>}
                       onClick={e => {
                         e.stopPropagation()
-                        componentList.splice(index, 1)
-                        setComponentList(cloneDeep(componentList))
+                        const arr = cloneDeep(componentList)
+                        arr.splice(index, 1)
                         let i = index
                         i--
+                        setComponentList(cloneDeep(arr))
+                        setCurrentComponent(arr[i])
                         setCurrentIndex(i)
                       }}
                     ></Button>

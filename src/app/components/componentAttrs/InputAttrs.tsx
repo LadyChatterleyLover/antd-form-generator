@@ -154,6 +154,11 @@ const InputAttrs = () => {
             <Switch></Switch>
           </Form.Item>
         ) : null}
+        {currentComponent.type === 'search' ? (
+          <Form.Item name={['attrs', 'loading']} label='加载状态' valuePropName='checked'>
+            <Switch></Switch>
+          </Form.Item>
+        ) : null}
         {currentComponent.type === 'password' ? (
           <Form.Item name={['attrs', 'visibilityToggle']} label='密码显隐' valuePropName='checked'>
             <Switch></Switch>
