@@ -17,7 +17,7 @@ body {
   border-bottom: none !important;
 }
 
-.chooseIcon svg {
-  width: 28px;
-  height: 28px;
+.chooseIcon .ant-modal-content {
+  height: 800px;
+  overflow-y: auto;
 }

@@ -1,4 +1,5 @@
 import { Tabs, TabsProps } from 'antd'
+import ComponentAttrs from '../componentAttrs/ComponentAttrs'
 import FormAttrs from '../formAttrs/FormAttrs'
 
 const RightSider = () => {
@@ -6,12 +7,12 @@ const RightSider = () => {
     {
       key: '1',
       label: '组件属性',
-      children: <FormAttrs></FormAttrs>,
+      children: <ComponentAttrs></ComponentAttrs>,
     },
     {
       key: '2',
       label: '表单属性',
-      children: 'Content of Tab Pane 2',
+      children: <FormAttrs></FormAttrs>,
     },
   ]
 

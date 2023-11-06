@@ -1,9 +1,9 @@
 'use client'
 
+import { createElement } from 'react'
 import { Modal } from 'antd'
 import { useReactive } from 'ahooks'
 import * as Icons from '@ant-design/icons'
-import { ReactNode, createElement } from 'react'
 
 interface Props {
   visible: boolean
@@ -19,13 +19,14 @@ const ChooseIcon: React.FC<Props> = ({ visible, setVisible, onOk }) => {
     <Modal
       title='选择图标'
       width='50%'
+      wrapClassName='chooseIcon'
       open={visible}
       onOk={() => {}}
       onCancel={() => {
         setVisible(!visible)
       }}
     >
-      <div className='flex flex-wrap  gap-y-4 chooseIcon'>
+      <div className='flex flex-wrap  gap-y-4 '>
         {Object.keys(Icons).map((item, index) =>
           item !== 'default' &&
           item !== 'createFromIconfontCN' &&
@@ -40,7 +41,13 @@ const ChooseIcon: React.FC<Props> = ({ visible, setVisible, onOk }) => {
                 setVisible(!visible)
               }}
             >
-              <div>{createElement((Icons as any)[item])}</div>
+              <div>
+                {createElement((Icons as any)[item], {
+                  style: {
+                    fontSize: '28px',
+                  },
+                })}
+              </div>
               <div>{item}</div>
             </div>
           ) : null

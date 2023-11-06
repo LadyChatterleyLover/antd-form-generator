@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ConfigProvider } from 'antd'
+import { App, ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs'
 import type Entity from '@ant-design/cssinjs/es/Cache'
@@ -12,7 +12,9 @@ const StyledComponentsRegistry = ({ children }: React.PropsWithChildren) => {
   useServerInsertedHTML(() => <style id='antd' dangerouslySetInnerHTML={{ __html: extractStyle(cache, true) }} />)
   return (
     <StyleProvider cache={cache}>
-      <ConfigProvider locale={zhCN}>{children}</ConfigProvider>
+      <ConfigProvider locale={zhCN}>
+        <App>{children}</App>
+      </ConfigProvider>
     </StyleProvider>
   )
 }
