@@ -6,8 +6,10 @@ import { cloneDeep } from 'lodash-es'
 import { LuPointer } from 'react-icons/lu'
 import ChooseIcon from '../chooseIcon/ChooseIcon'
 import { useReactive } from 'ahooks'
+import { useEffect } from 'react'
 
 const InputAttrs = () => {
+  const [form] = Form.useForm()
   const componentList = useStore(state => state.componentList)!
   const currentComponent = useStore(state => state.currentComponent)!
   const currentIndex = useStore(state => state.currentIndex)!
@@ -34,13 +36,17 @@ const InputAttrs = () => {
     setCurrentComponent(cloneDeep(currentComponent))
   }
 
+  useEffect(() => {
+    form.setFieldsValue(currentComponent)
+  }, [currentComponent, form])
+
   return (
     <>
       <Form
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        initialValues={currentComponent}
         autoComplete='off'
+        form={form}
         onFieldsChange={values => {
           const value = values[0]
           const names = value.name
@@ -142,6 +148,24 @@ const InputAttrs = () => {
               },
             ]}
           ></Select>
+        </Form.Item>
+        {currentComponent.type === 'search' ? (
+          <Form.Item name={['attrs', 'enterButton']} label='确认按钮' valuePropName='checked'>
+            <Switch></Switch>
+          </Form.Item>
+        ) : null}
+        {currentComponent.type === 'password' ? (
+          <Form.Item name={['attrs', 'visibilityToggle']} label='密码显隐' valuePropName='checked'>
+            <Switch></Switch>
+          </Form.Item>
+        ) : null}
+        {currentComponent.type === 'textarea' ? (
+          <Form.Item name={['attrs', 'autoSize']} label='自适应内容' valuePropName='checked'>
+            <Switch></Switch>
+          </Form.Item>
+        ) : null}
+        <Form.Item name={['attrs', 'allowClear']} label='清除按钮' valuePropName='checked'>
+          <Switch></Switch>
         </Form.Item>
         <Form.Item name={['attrs', 'bordered']} label='是否有边框' valuePropName='checked'>
           <Switch></Switch>

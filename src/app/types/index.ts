@@ -6,8 +6,32 @@ import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { Rule } from 'antd/es/form'
 
+export type ComponentType =
+  | 'input'
+  | 'password'
+  | 'search'
+  | 'textarea'
+  | 'button'
+  | 'cascader'
+  | 'checkbox'
+  | 'checkboxGroup'
+  | 'colorPicker'
+  | 'datePicker'
+  | 'inputNumber'
+  | 'radio'
+  | 'radioGroup'
+  | 'rate'
+  | 'select'
+  | 'option'
+  | 'slider'
+  | 'switch'
+  | 'timePicker'
+  | 'transfer'
+  | 'treeSelect'
+  | 'upload'
+
 export interface ComponentItem {
-  type: string
+  type: ComponentType
   label?: string
   icon?: FunctionComponent
   value?: any

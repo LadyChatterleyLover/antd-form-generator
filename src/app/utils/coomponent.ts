@@ -51,7 +51,7 @@ const componentList = [
     component: Search,
   },
   {
-    type: 'textArea',
+    type: 'textarea',
     component: TextArea,
   },
   {
