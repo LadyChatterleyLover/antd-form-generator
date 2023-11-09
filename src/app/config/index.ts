@@ -38,6 +38,7 @@ export const componentList: ComponentItem[] = [
     field: 'inputValue',
     rules: [],
     required: true,
+    value: '',
     attrs: <InputProps>{
       addonAfter: null,
       addonBefore: null,
@@ -51,7 +52,6 @@ export const componentList: ComponentItem[] = [
       prefix: '',
       size: 'middle',
       suffix: '',
-      value: '',
       readOnly: false,
     },
   },
@@ -63,6 +63,7 @@ export const componentList: ComponentItem[] = [
     labelCol: 2,
     field: 'inputValue',
     rules: [],
+    value: '',
     attrs: <PasswordProps>{
       addonAfter: null,
       addonBefore: null,
@@ -78,7 +79,6 @@ export const componentList: ComponentItem[] = [
       suffix: null,
       visibilityToggle: true,
       readOnly: false,
-      value: '',
     },
   },
   {
@@ -89,6 +89,7 @@ export const componentList: ComponentItem[] = [
     required: true,
     field: 'inputValue',
     rules: [],
+    value: '',
     attrs: <SearchProps>{
       addonAfter: null,
       addonBefore: null,
@@ -104,7 +105,6 @@ export const componentList: ComponentItem[] = [
       suffix: null,
       enterButton: true,
       readOnly: false,
-      value: '',
     },
   },
   {
@@ -114,6 +114,7 @@ export const componentList: ComponentItem[] = [
     icon: MdOutlineInput,
     labelCol: 2,
     field: 'inputValue',
+    value: '',
     rules: [],
     attrs: <TextAreaProps>{
       addonAfter: null,
@@ -122,7 +123,6 @@ export const componentList: ComponentItem[] = [
       maxLength: undefined,
       showCount: false,
       readOnly: false,
-      value: '',
     },
   },
   {
@@ -133,6 +133,7 @@ export const componentList: ComponentItem[] = [
     field: 'inputNumberValue',
     rules: [],
     required: true,
+    value: '',
     attrs: <InputNumberProps>{
       addonAfter: null,
       addonBefore: null,
@@ -143,7 +144,6 @@ export const componentList: ComponentItem[] = [
       prefix: '',
       size: 'middle',
       suffix: '',
-      value: '',
       readOnly: false,
       max: undefined,
       min: undefined,
@@ -168,14 +168,14 @@ export const componentList: ComponentItem[] = [
       {
         type: 'option',
         attrs: {
-          value: 1,
+          value: '1',
           label: '选项1',
         },
       },
       {
         type: 'option',
         attrs: {
-          value: 2,
+          value: '2',
           label: '选项2',
         },
       },

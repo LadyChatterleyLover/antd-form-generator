@@ -3,6 +3,7 @@ import { Result } from 'antd'
 import InputAttrs from '../componentAttrs/InputAttrs'
 import ButtonAttrs from './ButtonAttrs'
 import InputNumberAttrs from './InputNumberAttrs'
+import SelectAttrs from './SelectAttrs'
 
 const ComponentAttrs = () => {
   const currentComponent = useStore(state => state.currentComponent)
@@ -17,6 +18,7 @@ const ComponentAttrs = () => {
         ) : null}
         {currentComponent.type === 'button' ? <ButtonAttrs></ButtonAttrs> : null}
         {currentComponent.type === 'inputNumber' ? <InputNumberAttrs></InputNumberAttrs> : null}
+        {currentComponent.type === 'select' ? <SelectAttrs></SelectAttrs> : null}
       </div>
     </div>
   ) : (

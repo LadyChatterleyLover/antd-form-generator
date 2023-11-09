@@ -9,6 +9,7 @@ import { ComponentItem } from '../types'
 import { renderComponent } from '../utils/coomponent'
 import * as Icons from '@ant-design/icons'
 import type { InputProps } from 'antd'
+import { localSet } from '../utils/storage'
 
 export default function Home() {
   const [form] = Form.useForm()
@@ -34,7 +35,7 @@ export default function Home() {
 
   useEffect(() => {
     componentList?.map(item => {
-      form.setFieldValue(item.field, item.attrs?.value)
+      form.setFieldValue(item.field, item.value)
     })
   }, [componentList, form])
 
@@ -42,6 +43,7 @@ export default function Home() {
     <div
       className='h-full'
       onDrop={e => {
+        e.preventDefault()
         const item = JSON.parse(e.dataTransfer!.getData('item')) as ComponentItem
         item.field = `${item.field}${Math.floor(Math.random() * 10000)}`
         if (componentList?.length) {
@@ -63,42 +65,63 @@ export default function Home() {
       }}
     >
       {componentList?.length ? (
-        <Form form={form} name='componentList'>
+        <Form
+          form={form}
+          name='componentList'
+          autoComplete='off'
+          onValuesChange={value => {
+            const key = Object.keys(value)[0]
+            const component = cloneDeep(componentList.find(c => c.field === key)!)
+            const index = componentList.findIndex(c => c.field === key)!
+            const arr = cloneDeep(componentList)
+            arr[index].value = value[key]
+            component!.value = value[key]
+            setCurrentComponent(cloneDeep(component))
+            localSet('componentList', arr)
+          }}
+        >
           {componentList.map((item, index) => (
             <div
               key={item.field}
               className={`relative flex items-center py-3 px-2 mb-4 hover:bg-[#f6f7ff] ${
                 Number(currentIndex) === index ? 'bg-[#f6f7ff] rounded-md' : ''
               }`}
-              onClick={() => {
+              onClick={e => {
                 setCurrentComponent(item)
                 setCurrentIndex(index)
               }}
             >
-              <Form.Item
-                name={item.field}
-                label={item.label}
-                labelCol={{ span: item.labelCol }}
-                wrapperCol={{ span: 24 - (item.labelCol || 6) }}
-                style={{ width: '100%', marginBottom: 0 }}
-                required={item.required}
+              <div
+                className='w-full'
+                onClick={e => {
+                  e.stopPropagation()
+                }}
               >
-                {createElement(item.component!, {
-                  ...item.attrs,
-                  prefix: (item.attrs as InputProps)?.prefix ? (
-                    createElement((Icons as any)[(item.attrs as InputProps)?.prefix as string])
-                  ) : (
-                    <span></span>
-                  ),
-                  suffix: (item.attrs as InputProps)?.suffix ? (
-                    createElement((Icons as any)[(item.attrs as InputProps)?.suffix as string])
-                  ) : (
-                    <span></span>
-                  ),
-                  options: item.type === 'select' ? item.children?.map(child => child.attrs) : null,
-                  children: renderChildren(item),
-                } as any)}
-              </Form.Item>
+                <Form.Item
+                  name={item.field}
+                  label={item.label}
+                  labelCol={{ span: item.labelCol }}
+                  wrapperCol={{ span: 24 - (item.labelCol || 6) }}
+                  style={{ width: '100%', marginBottom: 0 }}
+                  required={item.required}
+                >
+                  {createElement(item.component!, {
+                    ...item.attrs,
+                    prefix: (item.attrs as InputProps)?.prefix ? (
+                      createElement((Icons as any)[(item.attrs as InputProps)?.prefix as string])
+                    ) : (
+                      <span></span>
+                    ),
+                    suffix: (item.attrs as InputProps)?.suffix ? (
+                      createElement((Icons as any)[(item.attrs as InputProps)?.suffix as string])
+                    ) : (
+                      <span></span>
+                    ),
+                    options: item.type === 'select' ? item.children?.map(child => child.attrs) : null,
+                    children: renderChildren(item),
+                  } as any)}
+                </Form.Item>
+              </div>
               {Number(currentIndex) === index ? (
                 <div className='flex items-center gap-x-4 absolute top-[-5px] right-2 z-10'>
                   <Tooltip title='复制' placement='bottomRight'>
@@ -131,7 +154,11 @@ export default function Home() {
                         const arr = cloneDeep(componentList)
                         arr.splice(index, 1)
                         let i = index
-                        i--
+                        if (i >= 1) {
+                          i--
+                        } else {
+                          i++
+                        }
                         setComponentList(cloneDeep(arr))
                         setCurrentComponent(arr[i] ?? null)
                         setCurrentIndex(i)

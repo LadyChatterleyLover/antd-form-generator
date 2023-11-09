@@ -22,6 +22,7 @@ export const useStore = create<State>(set => ({
     localSet('componentList', data)
   },
   setCurrentComponent: (data: ComponentItem | null) => {
+    console.log('data', data)
     set({
       currentComponent: data,
     })
