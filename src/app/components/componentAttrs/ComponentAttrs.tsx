@@ -20,7 +20,7 @@ const ComponentAttrs = () => {
       </div>
     </div>
   ) : (
-    <Result status='404' title='请先拖拽组件至编辑区域'></Result>
+    <Result status='404' subTitle='请先拖拽组件至编辑区域'></Result>
   )
 }
 

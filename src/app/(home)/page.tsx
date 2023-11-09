@@ -77,8 +77,8 @@ export default function Home() {
               >
                 {createElement(item.component!, {
                   ...item.attrs,
-                  prefix: item.attrs?.prefix ? (
-                    createElement((Icons as any)[item.attrs?.prefix as string])
+                  prefix: (item.attrs as InputProps)?.prefix ? (
+                    createElement((Icons as any)[(item.attrs as InputProps)?.prefix as string])
                   ) : (
                     <span></span>
                   ),
@@ -124,7 +124,7 @@ export default function Home() {
                         let i = index
                         i--
                         setComponentList(cloneDeep(arr))
-                        setCurrentComponent(arr[i])
+                        setCurrentComponent(arr[i] ?? null)
                         setCurrentIndex(i)
                       }}
                     ></Button>
