@@ -1,12 +1,21 @@
 import { FunctionComponent } from 'react'
 
-import type { ButtonProps, InputNumberProps, InputProps } from 'antd'
+import type {
+  ButtonProps,
+  CascaderProps,
+  CheckboxProps,
+  InputNumberProps,
+  InputProps,
+  RadioGroupProps,
+  RadioProps,
+} from 'antd'
 import type { PasswordProps } from 'antd/es/input/Password'
 import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { Rule } from 'antd/es/form'
 import { SelectProps } from 'antd/lib'
 import { OptionProps } from 'antd/es/select'
+import { RadioButtonProps } from 'antd/lib/radio/radioButton'
 
 export type ComponentType =
   | 'input'
@@ -54,4 +63,9 @@ export interface ComponentItem {
     | InputNumberProps
     | SelectProps
     | OptionProps
+    | CascaderProps
+    | RadioProps
+    | RadioGroupProps
+    | RadioButtonProps
+    | CheckboxProps
 }
