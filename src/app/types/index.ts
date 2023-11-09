@@ -6,6 +6,7 @@ import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
 import { Rule } from 'antd/es/form'
 import { SelectProps } from 'antd/lib'
+import { OptionProps } from 'antd/es/select'
 
 export type ComponentType =
   | 'input'
@@ -44,5 +45,13 @@ export interface ComponentItem {
   defaultProps?: Record<string, any>
   required?: boolean
   component?: FunctionComponent
-  attrs?: ButtonProps | InputProps | PasswordProps | SearchProps | TextAreaProps | InputNumberProps | SelectProps
+  attrs?:
+    | ButtonProps
+    | InputProps
+    | PasswordProps
+    | SearchProps
+    | TextAreaProps
+    | InputNumberProps
+    | SelectProps
+    | OptionProps
 }

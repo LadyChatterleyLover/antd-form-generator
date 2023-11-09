@@ -1,6 +1,6 @@
 'use client'
 
-import { Attributes, FunctionComponent, createElement, useEffect } from 'react'
+import { FunctionComponent, createElement, useEffect } from 'react'
 import { AiOutlineCopy, AiOutlineDelete } from 'react-icons/ai'
 import { useStore } from '../store'
 import { Button, Form, Tooltip } from 'antd'
@@ -23,6 +23,14 @@ export default function Home() {
   const setComponentList = useStore(state => state.setComponentList)
   const setCurrentComponent = useStore(state => state.setCurrentComponent)
   const setCurrentIndex = useStore(state => state.setCurrentIndex)
+
+  const renderChildren = (item: ComponentItem) => {
+    if (item.type === 'button') {
+      return item.attrs?.value
+    }
+
+    return null
+  }
 
   useEffect(() => {
     componentList?.map(item => {
@@ -87,7 +95,8 @@ export default function Home() {
                   ) : (
                     <span></span>
                   ),
-                  children: item.type === 'button' ? item.attrs?.value : null,
+                  options: item.type === 'select' ? item.children?.map(child => child.attrs) : null,
+                  children: renderChildren(item),
                 } as any)}
               </Form.Item>
               {Number(currentIndex) === index ? (

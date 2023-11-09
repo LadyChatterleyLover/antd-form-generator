@@ -1,12 +1,12 @@
-import { LuFormInput } from 'react-icons/lu'
-import { GoNumber } from 'react-icons/go'
 import { MdOutlineInput, MdPassword, MdSearch } from 'react-icons/md'
 import { LiaHandPointerSolid } from 'react-icons/lia'
-import type { InputProps, ButtonProps, InputNumberProps } from 'antd'
+import { LuFormInput } from 'react-icons/lu'
+import { GoNumber, GoSingleSelect } from 'react-icons/go'
+import type { InputProps, ButtonProps, InputNumberProps, SelectProps } from 'antd'
 import type { PasswordProps } from 'antd/es/input/Password'
 import type { SearchProps } from 'antd/es/input/Search'
 import type { TextAreaProps } from 'antd/es/input/TextArea'
-import { ComponentItem } from '../types'
+import type { ComponentItem } from '../types'
 
 export const componentList: ComponentItem[] = [
   {
@@ -153,6 +153,49 @@ export const componentList: ComponentItem[] = [
       decimalSeparator: '',
       keyboard: true,
       precision: undefined,
+    },
+  },
+  {
+    type: 'select',
+    label: '下拉选择',
+    icon: GoSingleSelect,
+    labelCol: 2,
+    field: 'selectValue',
+    rules: [],
+    required: true,
+    value: undefined,
+    children: [
+      {
+        type: 'option',
+        attrs: {
+          value: 1,
+          label: '选项1',
+        },
+      },
+      {
+        type: 'option',
+        attrs: {
+          value: 2,
+          label: '选项2',
+        },
+      },
+    ],
+    attrs: <SelectProps>{
+      allowClear: false,
+      autoFocus: false,
+      bordered: true,
+      defaultActiveFirstOption: true,
+      disabled: false,
+      filterOption: false,
+      loading: false,
+      maxTagCount: undefined,
+      mode: undefined,
+      placeholder: '请选择',
+      placement: 'bottomLeft',
+      showSearch: false,
+      size: 'middle',
+      status: '',
+      virtual: true,
     },
   },
 ]
